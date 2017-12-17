@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>统计表</title>
+    <link rel="stylesheet"href="统计表.css" type="text/css">
+</head>
+<style>
+    html{
+        background-image: url("timg.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+</style>
+
+<body>
+<form id="form1">
+    <div><i>姓名</i> <input type="text" class="xingming" id="in1"></div><br>
+    <div><i>班级</i> <input type="text" class="banji" id="in2"></div><br>
+    <div><i>数学成绩</i><input type="text" class="shuxue" id="in3"></div><br>
+    <div><i>语文成绩</i> <input type="text" class="yuwen" id="in4"></div><br>
+    <div><i>理综成绩</i> <input type="text" class="lizong" id="in5"></div><br>
+
+</form>
+<div> <button id="button1" class="tijiao" onclick="add()">提交</button> <input type="reset" value="reset" id="resetButton" style="display:none;"/>
+</div><br>
+<table border="3" class="g1">
+    <thead><tr class="c1">
+        <th>姓名</th>
+        <th>班级</th>
+        <th>数学成绩</th>
+        <th>语文成绩</th>
+        <th>理综成绩</th>
+        <th><button id="button4" onclick="showsum(student)">求和</button></th>
+    </tr></thead>
+
+    <tbody id="info-body"></tbody>
+</table>
+<script>
+    function $(id){
+        return document.getElementById(id);
+    }
+    var info_body;
+    var student = [];
+    function create(name,classnum,cscore,mscore,sscore) {
+        this.name=name;
+        this.classnum=classnum;
+        this.cscore=cscore;
+        this.mscore=mscore;
+        this.sscore=sscore;
+    }
+    function add() {
+        var stu = new create();
+        var content = document.getElementById("1");
+        stu.name = $("in1").value.trim();
+        stu.classnum = $("in2").value.trim();
+        stu.cscore = $("in3").value.trim();
+        stu.mscore = $("in4").value.trim();
+        stu.sscore = $("in5").value.trim();
+        student.push(stu);
+        show(student);
+    }
+    function show(data) {
+        info_body = info_body || $('info-body');
+        var html = [];
+        for(var i=0;i < data.length;i++){
+            html.push('<tr class="tr">');
+            html.push('<td>'+data[i].name+'</td>');
+            html.push('<td>'+data[i].classnum+'</td>');
+            html.push('<td class="math">'+data[i].mscore+'</td>');
+            html.push('<td class="chinese">'+data[i].cscore+'</td>');
+            html.push('<td class="science">'+data[i].sscore+'</td>');
+            html.push('<td class="sum"></td>');
+            html.push('</tr>');
+        }
+        info_body.innerHTML = html.join("");
+    }
+    function deleting(data) {
+        info_body = info_body || $('info-body');
+        var p = document.getElementsByClassName("tr");
+        for(var key in p){
+            if(typeof(p[key]) == "object")
+                p[key].parentNode.removeChild(p[key]);
+        }
+        data.length = 0;
+        show(data);
+    }
+    function back(data) {
+        info_body = info_body || $('info-body');
+        var p = document.getElementsByClassName("tr");
+        for(var key in p){
+            if(typeof(p[key]) == "object") {
+                if(key == data.length)
+                    p[key].parentNode.removeChild(p[key]);
+            }
+        }
+        data.pop();
+        show(data);
+    }
+    function showsum(data) {
+        info_body = info_body || $('info-body');
+        var p = document.getElementsByClassName("sum");
+        for(var key in p){
+            if(typeof(p[key]) == "object"){
+                p[key].innerText = ((data[key].mscore-1+1)+(data[key].cscore-1+1)+(data[key].sscore-1+1));
+            }
+
+        }
+    }
+</script>
+
+</body>
+
+</html>

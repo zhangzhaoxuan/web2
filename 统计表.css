@@ -1,0 +1,47 @@
+.xingming{
+    width:500px;
+    height:40px;
+    font-size:35px;
+   margin-left: 41px;
+}
+.banji{
+    width:500px;
+    height:40px;
+    font-size:35px;
+    margin-left: 41px;
+}
+.yuwen{
+    width:500px;
+    height:40px;
+    font-size:35px;
+    margin-left: 10px;
+}
+.lizong{
+    width:500px;
+    height:40px;
+    font-size:35px;
+    margin-left: 10px;
+}
+.shuxue{
+    width:500px;
+    height:40px;
+    font-size:35px;
+    margin-left: 14px;
+}
+.tijiao{
+    border: 0;
+    width: 500px;
+    height: 40px;
+    font-size: 30px;
+    background-color: lawngreen;
+    margin-left: 80px;
+}
+.g1{
+ width: 800px;
+    height: 100px;
+   color:black;
+    float: right;
+}
+.c1,c2,c3{
+    height: 30px;
+}

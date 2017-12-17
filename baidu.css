@@ -63,9 +63,3 @@ p,p>a{
     background-color: rgb(35,36,254);
     transition-duration: 1000ms;
 }
-.top{
-    outline-width: 1px;
-    outline-style: solid;
-    outline-color: slategrey;
-    border-top:none;
-}
